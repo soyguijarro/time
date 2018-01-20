@@ -5,7 +5,7 @@ import './Period.css';
 
 const getFirstLetter = string => string.slice(0, 1);
 
-const Period = ({ date, period }) => {
+const Period = ({ date, period, onClick }) => {
   const { name, start, end, difference, unit, color } = period;
 
   const startDate = start(date);
@@ -22,6 +22,7 @@ const Period = ({ date, period }) => {
         color={color}
         width={0.16}
         percentage={percentageLeft}
+        onClick={onClick}
       >
         <h2 className="period__chart__title" style={{ color }}>
           {unitsLeft} {getFirstLetter(unit)}

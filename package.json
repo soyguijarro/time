@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/jest": "^22.0.1",
     "date-fns": "^1.29.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -28,7 +29,10 @@
     "trailingComma": "es5"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": ["prettier", "git add"]
+    "src/**/*.{js,jsx,json,css}": [
+      "prettier",
+      "git add"
+    ]
   },
   "homepage": "https://soyguijarro.github.io/time"
 }

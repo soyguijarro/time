@@ -17,7 +17,7 @@ const MONTH_ID = 'month';
 const QUARTER_ID = 'quarter';
 const YEAR_ID = 'year';
 
-const PERIODS = {
+export const PERIODS = {
   [WEEK_ID]: {
     id: WEEK_ID,
     name: 'Week',
@@ -55,8 +55,3 @@ const PERIODS = {
     color: '#FF5722',
   },
 };
-
-export const PERIODS_ARRAY = Object.keys(PERIODS).map(periodKey => ({
-  id: periodKey,
-  ...PERIODS[periodKey],
-}));

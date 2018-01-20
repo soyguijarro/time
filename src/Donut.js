@@ -14,8 +14,8 @@ const DonutText = ({ children }) => {
   });
 };
 
-const DonutArc = ({ color, width, percentage }) => (
-  <Svg className="donut__graph" size="2">
+const DonutArc = ({ color, width, percentage, onClick }) => (
+  <Svg className="donut__graph" size="2" onClick={onClick}>
     <SvgCircle className="donut__graph__background" strokeWidth={width} />
     <SvgCircle
       className="donut__graph__fill"
@@ -26,11 +26,16 @@ const DonutArc = ({ color, width, percentage }) => (
   </Svg>
 );
 
-const Donut = ({ className, color, width, percentage, children }) => (
+const Donut = ({ className, color, width, percentage, onClick, children }) => (
   <div className={`donut ${className || ''}`}>
     <DonutText>{children}</DonutText>
 
-    <DonutArc color={color} width={width} percentage={percentage} />
+    <DonutArc
+      color={color}
+      width={width}
+      percentage={percentage}
+      onClick={onClick}
+    />
   </div>
 );
 

@@ -1,11 +1,15 @@
 import React, { Component, Fragment } from 'react';
 import Header from './Header';
 import Periods from './Periods';
-import { PERIODS_ARRAY } from './config';
+import Goals from './Goals';
+import { PERIODS } from './config';
+import { arrayToObject, objectToArray } from './utils';
 
 class App extends Component {
   state = {
     currentDate: new Date(),
+    selectedPeriod: null,
+    goals: arrayToObject(Object.keys(PERIODS), periodId => [periodId, []]),
   };
 
   componentDidMount() {
@@ -22,13 +26,27 @@ class App extends Component {
     });
   };
 
+  setSelectedPeriod = period => {
+    this.setState({
+      selectedPeriod: period,
+    });
+  };
+
   render() {
-    const { currentDate } = this.state;
+    const { currentDate, selectedPeriod } = this.state;
 
     return (
       <Fragment>
         <Header date={currentDate} />
-        <Periods date={currentDate} periods={PERIODS_ARRAY} />
+        {selectedPeriod ? (
+          <Goals date={currentDate} period={selectedPeriod} />
+        ) : (
+          <Periods
+            date={currentDate}
+            periods={objectToArray(PERIODS)}
+            onPeriodClick={this.setSelectedPeriod}
+          />
+        )}
       </Fragment>
     );
   }
